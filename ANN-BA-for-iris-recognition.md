@@ -56,4 +56,7 @@ and avoiding obstacles while flying by using sound waves that are emitted, calle
 * Repeat steps f to i, until the maximum iteration is reached
 * Save weights and biases after maximum iterations 
 
+#### flowchart
+<img width="247" alt="1" src="https://user-images.githubusercontent.com/90967773/200171639-b31a7248-98ec-42c7-bf4c-8db5995467d2.png">
+
 
