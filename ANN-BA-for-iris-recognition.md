@@ -9,7 +9,7 @@ Has the US Patent no. 5,291,560 on behalf of Daugman and deployed at Iridian Tec
 information on the characteristics of the image is in the form of numeric
 
 ### 1. Grayscale
-<h5> [5] The color image consists of 3 matrix layers, namely R-layer (r), G-layer (g), and B-layer (b) 
+<h5> [5] The color image consists of 3 matrix layers, namely R-layer $(r)$, G-layer $(g)$, and B-layer $(b)$ 
 with the value of an image being represented between 0 to 255. This process converts the 3 layers above into 1 matrix layer. 
 gray-scale(s) and the result is a gray-scale image. In this image there is no more color, there is a degree of gray.
  
@@ -38,8 +38,8 @@ and avoiding obstacles while flying by using sound waves that are emitted, calle
 #### The process of iris image recognition using a hybrid backpropagation neural network and a bat algorithm aims to obtain weights and biases that will be used in the validation test. 
 #### The steps for training the backpropagation neural network and the bat algorithm are as follows:
 
-* Inputting data and initializing the parameters of the bat algorithm and backpropagation neural network. Backpropagation parameters are target error, and learning rate. The parameters of the bat algorithm are the initial population of bats (pop size), maximum iteration (t), loudness decrease coefficient (𝛼), pulse rate increase coefficient (𝛾), minimum frequency ( f𝑚 ), maximum frequency (fmax ).
-* Generating initial population of bats consisting of position (𝑥𝑖), speed (𝑣𝑖), loudness (𝐴𝑖), pulse rate (𝑟𝑖).
+* Inputting data and initializing the parameters of the bat algorithm and backpropagation neural network. Backpropagation parameters are target error, and learning rate. The parameters of the bat algorithm are the initial population of bats $(pop size)$, maximum iteration $(t)$, loudness decrease coefficient $(𝛼)$, pulse rate increase coefficient $(𝛾)$, minimum frequency $( f𝑚 )$, maximum frequency $(fmax )$.
+* Generating initial population of bats consisting of position $(𝑥𝑖)$, speed $(𝑣𝑖)$, loudness $(𝐴𝑖)$, pulse rate $(𝑟𝑖)$.
 * Backpropagation training process
     * Conversion of each element of the Bat's position into weights and biases in Backpropagation.
     * Feedforward process
@@ -50,21 +50,40 @@ and avoiding obstacles while flying by using sound waves that are emitted, calle
     * Calculate the average MSE
     * Convert weight and bias to bat position
 * Calculate the objective function so that the value of the objective function 	of each bat in the initial position is obtained, with the following equation
+ $MSE: 1/(MSE+1)$
 * Compare the objective function values of each bat to determine the best 	temporary global solution.
-* Updates the bat position (movement) based on the new frequency and speed 	of each bat.
-* Comparing the pulse rate of each bat (𝑟𝑖) by generating a real number obtained at random at intervals (0, 1). If the number is generated randomly at the interval (0,1) > 𝑟𝑖, a local search is carried out. Then, the local solution results are used as a new position, then do the backpropagation process and calculate the objective function. If not, go straight to the backpropagation process and calculate the objective function
-* Comparing loudness of bat (𝐴𝑖) with real numbers that are generated randomly at intervals (0,1) and comparing the value of the new objective function with the old one. If 𝐴𝑖 is greater than the value of a real number that is randomly generated in the interval (0,1), and if the value of the old objective function 〖f(x〗_i^t)<〖f(x〗_i^t) is new then update 𝐴𝑖 and 𝑟𝑖, and accept the new solution. But if not, then make the previous position a new position.
+* Updates the bat position $(movement)$ based on the new frequency and speed 	of each bat.
+* Comparing the pulse rate of each bat $(𝑟𝑖)$ by generating a real number obtained at random at intervals $(0, 1)$. If the number is generated randomly at the interval $(0,1) > 𝑟𝑖$, a local search is carried out. Then, the local solution results are used as a new position, then do the backpropagation process and calculate the objective function. If not, go straight to the backpropagation process and calculate the objective function
+* Comparing loudness of bat $(𝐴𝑖)$ with real numbers that are generated randomly at intervals $(0,1)$ and comparing the value of the new objective function with the old one. If $𝐴𝑖$ is greater than the value of a real number that is randomly generated in the interval $(0,1)$, and if the value of the old objective function $(f(x_i^t))<(f(x_i^t))$ is new then update $𝐴𝑖$ and $𝑟𝑖$, and accept the new solution. But if not, then make the previous position a new position.
 * Saves the new solution, loudness, and pulse rate every bat
 * Repeat steps f to i, until the maximum iteration is reached
 * Save weights and biases after maximum iterations 
 
-#### flowchart
+### Flowchart
 <img width="247" alt="1" src="https://user-images.githubusercontent.com/90967773/200171639-b31a7248-98ec-42c7-bf4c-8db5995467d2.png">
  
 ## Analysis and Result
-Reference data used in this paper is data in the form of an iris image with a PNG file type. Iris images used as many as 90 images which are divided into their use for training and testing data. The amount of data used for training is 60 images, while the amount of data for validation is 30 images.
+Reference data used in this paper is data in the form of an iris image with a PNG file type. Iris images used as many as 90 images which are divided into their use for training and testing data. The amount of data used for training is 60 images, while the amount of data for validation is 30 images. [Iris Database](http://phoenix.inf.upol.cz/iris/)
  
  All iris images that will be used for iris image recognition must be the same size. This size is obtained from the largest size of the image of the iris of the eye that is close to the pupil, this is to avoid interference/noise from the eyelashes reflected on the iris. In this paper, the size of the image used is 180×120 pixels. After all, images are uniform in size, the next step is that the image will enter the background filter and pupil removal process using Adobe Photoshop CC 2019 software. Figure 2 shows the results of the background filter and pupil removal process.
+ 
+<img width="441" alt="2" src="https://user-images.githubusercontent.com/90967773/200773412-4b1cb563-e6a8-4d8b-ba02-74ae5e5d4035.png">
+ 
+ The initial process that must be done before the training and validation process is image processing. Image processing consists of grayscale, segmentation, and continued with the normalization process. The results of the grayscale process are shown in Figure 3.
+ 
+ <img width="315" alt="3" src="https://user-images.githubusercontent.com/90967773/200773466-ad5967fe-bb26-4a95-97c2-5b101908bd26.png">
+
+ The result of the grayscale process is a matrix measuring 180×120, then processed by a segmentation process and followed by a normalization process to produce a matrix measuring 150×1.
+ 
+ The next process is the training process on the backpropagation neural network and the bat algorithm. The parameters of the backpropagation neural network are learning rate, error limit, while the parameters of the bat algorithm are loudness, pulse rate, minimum frequency, maximum frequency, number of individual bats, and maximum iterations.
+ 
+ The backpropagation neural network structure consists of 3 layers, namely 150 units of the input layer, 150 units of the hidden layer, and 6 units of output. In the training process, the MSE value in the backpropagation neural network is used as a component of the objective function value in the bat algorithm.
+ 
+ Training of backpropagation neural network and bat algorithm on the iris image data is done by determining several parameters. In this training, the number of individuals used is 10,30,50 individuals, loudness is set to $0.9$ [6], pulse rate is set to $0.9$ [6] and $0.2$ [13], maximum frequency and minimum frequency are set to $100$ and $0$ [6], the learning rate is set to $0.1,0.5,$ and $0.9$, the maximum iteration is set to $50000$ iterations, and the error limit is set to $0.01$.
+ 
+ The next step is to test the training data using the weights and biases obtained at the stage of the backpropagation neural network and the bat algorithm. the results of the test process on the training data are shown in Table 1.
+ 
+ 
  
 
 
