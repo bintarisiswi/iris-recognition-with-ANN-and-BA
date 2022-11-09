@@ -12,6 +12,8 @@ information on the characteristics of the image is in the form of numeric
 <h5> [5] The color image consists of 3 matrix layers, namely R-layer (r), G-layer (g), and B-layer (b) 
 with the value of an image being represented between 0 to 255. This process converts the 3 layers above into 1 matrix layer. 
 gray-scale(s) and the result is a gray-scale image. In this image there is no more color, there is a degree of gray.
+ 
+ $$s=(r+g+b)/3$$
 
 ### 2. Segmentation 
 <h5>[5] The stages in the segmentation process are that each segment of an image is searched for the average segment, 
@@ -58,5 +60,12 @@ and avoiding obstacles while flying by using sound waves that are emitted, calle
 
 #### flowchart
 <img width="247" alt="1" src="https://user-images.githubusercontent.com/90967773/200171639-b31a7248-98ec-42c7-bf4c-8db5995467d2.png">
+ 
+## Analysis and Result
+Reference data used in this paper is data in the form of an iris image with a PNG file type. Iris images used as many as 90 images which are divided into their use for training and testing data. The amount of data used for training is 60 images, while the amount of data for validation is 30 images.
+ 
+ All iris images that will be used for iris image recognition must be the same size. This size is obtained from the largest size of the image of the iris of the eye that is close to the pupil, this is to avoid interference/noise from the eyelashes reflected on the iris. In this paper, the size of the image used is 180×120 pixels. After all, images are uniform in size, the next step is that the image will enter the background filter and pupil removal process using Adobe Photoshop CC 2019 software. Figure 2 shows the results of the background filter and pupil removal process.
+ 
+
 
 
