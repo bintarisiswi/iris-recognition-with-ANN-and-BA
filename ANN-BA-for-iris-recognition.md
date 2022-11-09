@@ -1,9 +1,13 @@
 # Overview
 ## Iris Image Recognition Using Hybrid Backpropagation Neural Network and Bat Algorithm
-<h4>[1] The origins of modern iris image recognition were founded in 1986 when Leonard Flom and Aran Safir filed a patent for the first iris image recognition system but without any algorithm. 
+[1] The origins of modern iris image recognition were founded in 1986 when Leonard Flom and Aran Safir filed a patent for the first iris image recognition system but without any algorithm. 
+
 [2],[3] The algorithm underlying the iris image recognition was developed by Dr. John Daugman, a Harvard Ph.D. graduate and well-known computer scientist at the University of Cambridge, England. 
 Has the US Patent no. 5,291,560 on behalf of Daugman and deployed at Iridian Technologies, Inc., which is one of the world's leading vendors of iris-based systems.
-<h4> [4]Among all the biometric characteristics, the texture pattern of the iris is believed to be the most distinguishable. Compared to facial or other characteristics that change more drastically, the iris remains relatively stable and is rarely affected by external elements, because it is located in the inner eye organ. In addition, which distinguishes other biometrics such as fingerprints, the iris is seen as a very reliable biometric technology due to its stability, and the high variation of the iris between individuals.
+
+[4]Among all the biometric characteristics, the texture pattern of the iris is believed to be the most distinguishable. Compared to facial or other characteristics that change more drastically, the iris remains relatively stable and is rarely affected by external elements, because it is located in the inner eye organ. In addition, which distinguishes other biometrics such as fingerprints, the iris is seen as a very reliable biometric technology due to its stability, and the high variation of the iris between individuals.
+
+Based on the description above, this paper will examine the recognition of iris imagery using a hybrid backpropagation neural network and the bat algorithm.
 
 ## Image Processing
 <h4>[5]Image processing aims to improve image quality, where the resulting image can provide clear information and 
