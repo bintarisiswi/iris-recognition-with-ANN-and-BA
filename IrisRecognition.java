@@ -1433,3 +1433,32 @@ public class IrisRecognition extends javax.swing.JFrame {
     void saved(){
         JOptionPane.showMessageDialog (this, "SAVED!");
     }
+
+    private void b_browseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_browseActionPerformed
+        // TODO add your handling code here:
+        if(rb1.isSelected() || rb2.isSelected()){
+            JFileChooser jfile = new JFileChooser();
+            jfile.showOpenDialog(null);
+            File pict = jfile.getSelectedFile();
+            label= pict.getAbsolutePath();
+            ls_nama = pict.getName();L_name.setText("Gambar: "+ls_nama);
+            if(label.substring(label.length()-3, label.length()).equals("png")){
+                try{
+                    BIM = ImageIO.read(pict);
+                    g1.setIcon(new ImageIcon(BIM));
+                }catch (IOException e){}
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "FILE DOESN'T MATCH");
+            }
+            b_browse.setEnabled(true);
+            b_grayscale.setEnabled(true);
+            b_refresh.setEnabled(true);
+            b_prosesdata.setEnabled(true);
+        }else{JOptionPane.showMessageDialog(null,"SELECT MODE!");}
+    }//GEN-LAST:event_b_browseActionPerformed
+
+    private void rb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb1ActionPerformed
+        // TODO add your handling code here:
+        kolom=data1;banyak=kolom;
+    }//GEN-LAST:event_rb1ActionPerformed
