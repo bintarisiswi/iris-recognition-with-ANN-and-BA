@@ -1462,3 +1462,21 @@ public class IrisRecognition extends javax.swing.JFrame {
         // TODO add your handling code here:
         kolom=data1;banyak=kolom;
     }//GEN-LAST:event_rb1ActionPerformed
+    
+    private void rb2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb2ActionPerformed
+        // TODO add your handling code here:
+        ncitra=0;kolom=data2;banyak=kolom;
+        g1.setIcon(new ImageIcon(""));g2.setIcon(new ImageIcon(""));L_name.setText("");
+        g1.setEnabled(true);g2.setEnabled(true);
+        b_browse.setEnabled(true);b_refresh.setEnabled(true);b_grayscale.setEnabled(true);b_prosesdata.setEnabled(true);
+        DefaultTableModel mx=(DefaultTableModel) m_grayscale.getModel();
+        for(int i=mx.getRowCount()-1;i>=0;i--){
+            mx=(DefaultTableModel)m_grayscale.getModel();mx.removeRow(i);
+        }
+    }//GEN-LAST:event_rb2ActionPerformed
+
+    private void b_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_refreshActionPerformed
+        // TODO add your handling code here:
+        g1.setIcon(new ImageIcon(""));g2.setIcon(new ImageIcon(""));
+        L_name.setText("");
+    }//GEN-LAST:event_b_refreshActionPerformed
