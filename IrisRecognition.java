@@ -1480,3 +1480,98 @@ public class IrisRecognition extends javax.swing.JFrame {
         g1.setIcon(new ImageIcon(""));g2.setIcon(new ImageIcon(""));
         L_name.setText("");
     }//GEN-LAST:event_b_refreshActionPerformed
+private void b_grayscaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_grayscaleActionPerformed
+        // TODO add your handling code here:
+        height = BIM.getHeight();
+        width = BIM.getWidth();
+        Object[]kolomnomor=new Object[width];
+        for(int i=0;i<width;i++){kolomnomor[i]=i+1;}
+        int[][] Grey = new int[width][height];
+        int[][]Aa = new int[width][height];
+        Object[][]m1=new Object[height][width];
+        double [][]data_segme=new double[height][width];
+        double gt = 0;
+        for(int i=0;i<width;i++){
+            for(int j=0;j<height;j++){
+                Color CC = new Color (BIM.getRGB(i,j));
+                Grey[i][j]=(int)(CC.getRed()+ CC.getGreen()+CC.getBlue())/3;
+                greys[i][j]=Grey[i][j];
+                int grey = Grey[i][j];
+
+                Color NewColor = new Color(grey, grey, grey);
+                BIM.setRGB(i,j, NewColor.getRGB());
+            }
+        }
+        for(int i=0;i<width;i++){
+            for(int j=0;j<height;j++){
+                data_segme[j][i]=Grey[i][j];
+                m1[j][i]=data_segme[j][i];
+            }
+        }
+        DefaultTableModel Dinput=new DefaultTableModel(m1,kolomnomor);m_gray.setModel(Dinput);m_gray.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        int p=0;//int y=0;
+        try{
+            File myFile=new File("E:\\IrisRecognition\\Result\\data seg.txt");
+            if(!myFile.exists()){myFile.createNewFile();}
+            try (PrintWriter printWriter = new PrintWriter(myFile)) {
+                for(int i=0;i<width;i++){
+                    for(int j=0;j<height;j++){
+                        if((i==0 && j==0) || (i==0 && j%segmen ==0)){
+                            if(i<width && j<height){
+                                gt=0;
+                                for(int A=0;A<segmen;A++){
+                                    for(int B=0;B<segmen;B++){
+                                        gt=gt+Grey[i+A][j+B];
+                                    }
+                                }
+                                rs[p]=(int)(gt/(segmen*segmen));seg=(int) rs[p];printWriter.println(seg);
+                                p++;
+                            }//end if
+                        }//end if
+                        else if((i%segmen==0 && j==0) || (i%segmen==0 && j%segmen==0)){
+                            if(i<width && j<height){
+                                gt=0;
+                                for(int A=0;A<segmen;A++){
+                                    for(int B=0;B<segmen;B++){
+                                        gt=gt+Grey[i+A][j+B];
+                                    }
+                                }
+                                rs[p]=(int)(gt/(segmen*segmen));seg=(int)rs[p];
+                                printWriter.println(seg);
+                                p++;
+                            }//end if
+                        }//end if
+                    }//y++;
+                }//System.out.println("p: "+p);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(IrisRecognition.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Object satu[]={"segmentasi"};DefaultTableModel Mdata11=new DefaultTableModel(satu,0);
+        String file_x="E:\\IrisRecognition\\Result\\data seg.txt";
+        File file11 = new File(file_x);
+        try{
+            FileReader fr_11=new FileReader(file11);
+            BufferedReader br_11 = new BufferedReader(fr_11);
+            
+            Object[]lines_11=br_11.lines().toArray();
+            for (Object lines_111 : lines_11) {
+                String[] baris_row = lines_111.toString().split("\t");
+                Mdata11.addRow(baris_row);
+            }
+        } catch (FileNotFoundException ex) { 
+            Logger.getLogger(IrisRecognition.class.getName()).log(Level.SEVERE, null, ex);
+        }m_seg1.setModel(Mdata11);
+        
+        for(int i=0;i<baris;i++){
+            for(int j=0;j<1;j++){
+                String me=m_seg1.getModel().getValueAt(i,j).toString();
+                segm[i][j]=Double.parseDouble(me);
+                segmentasi=(int) segm[i][j];
+            }   
+        }
+        g2.setIcon(new ImageIcon(BIM));
+        b_browse.setEnabled(true);
+        b_grayscale.setEnabled(true);
+        b_refresh.setEnabled(true);
+    }//GEN-LAST:event_b_grayscaleActionPerformed
